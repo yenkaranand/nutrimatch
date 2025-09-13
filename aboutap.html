@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - NutriMatch</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .back-btn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: black;
+            color: white;
+            text-shadow: orange;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .back-btn:hover {
+            background-color: #fda451;
+            text-decoration: double underline;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #fda451;
+            margin: 0;
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            color: #1d1c1c;
+            margin-top: 10px;
+        }
+        
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .tab-btn {
+            background-color: #fda451;
+            font-weight: bold;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            flex: 1;
+            max-width: 200px;
+        }
+        
+        .tab-btn:hover {
+            background-color: #222222;
+        }
+        
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .section {
+            display: none;
+            width: 100%;
+            max-width: 800px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            color: #fda451;
+            margin-bottom: 15px;
+        }
+        
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #444;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        
+        li {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        
+        li strong {
+            color: #fda451;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            header p {
+                font-size: 1rem;
+            }
+            .tab-btn {
+                font-size: 0.9rem;
+                padding: 10px;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-btn">
+                << Back</a>
+
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <h1>About NutriMatch</h1>
+                    <p>Your partner in personalized nutrition and sustainable food choices</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-btn" onclick="showSection('vision')">Our Vision</button>
+            <button class="tab-btn" onclick="showSection('mission')">Our Mission</button>
+            <button class="tab-btn" onclick="showSection('values')">Our Values</button>
+        </div>
+
+        <div class="content">
+            <div id="vision" class="section">
+                <h2>Our Vision</h2>
+                <p>To empower individuals to make healthier food choices by providing easy access to personalized recipes that nourish the body and mind. We envision a world where food is enjoyed mindfully, waste is minimized, and nutrition is accessible
+                    to all. NutriMatch aims to be the leading platform where every individual finds guidance tailored to their unique lifestyle, ensuring a balance between health, convenience, and taste.</p>
+            </div>
+            <div id="mission" class="section">
+                <h2>Our Mission</h2>
+                <p>Our mission is simple: to make personalized nutrition accessible, enjoyable, and convenient. Through NutriMatch, we aim to transform the way people think about meals by offering recipe suggestions that meet individual health needs and
+                    ingredient availability, ensuring that users have a fulfilling and sustainable food experience. We strive to foster a global community that values nutrition as a cornerstone of wellness and happiness.</p>
+            </div>
+            <div id="values" class="section">
+                <h2>Our Values</h2>
+                <ul>
+                    <li><strong>Health-Centric:</strong> At the heart of NutriMatch is a commitment to promoting balanced nutrition. Every recipe suggestion is designed to support optimal health, taking into account essential nutrients and dietary preferences.</li>
+                    <li><strong>Sustainability:</strong> We are passionate about reducing food waste. NutriMatch encourages users to use what they already have, creating new meals from available ingredients and supporting a more sustainable lifestyle.</li>
+                    <li><strong>Inclusivity:</strong> NutriMatch is for everyone. We accommodate a wide range of dietary needs, from vegetarian to gluten-free and everything in between, so all users feel supported on their nutrition journey.</li>
+                    <li><strong>Innovation:</strong> We leverage cutting-edge technology to deliver personalized recommendations that cater to the evolving needs of our users.</li>
+                    <li><strong>Community-Driven:</strong> NutriMatch fosters a sense of community by encouraging users to share their experiences, recipes, and tips, creating a supportive and inspiring environment.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.style.display = 'none');
+
+            // Show the selected section
+            const selectedSection = document.getElementById(sectionId);
+            selectedSection.style.display = 'block';
+        }
+
+        // Show the "Our Vision" section by default when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('vision');
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Firebase Auth</title>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-auth-compat.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        #app {
+            background: #fff;
+            width: 450px;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 20px 35px rgba(0, 0, 1, 0.9);
+        }
+        
+        h2 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        input {
+            width: 95%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 60px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            background: #fd8f36;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        button:hover {
+            background: #07001f;
+        }
+        
+        a {
+            color: #fd7e14;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+            color: #0c0327;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- Signup Form -->
+        <div id="signup-form" class="form-container">
+            <h2>Sign Up</h2>
+            <form onsubmit="signup(event)">
+                <input type="text" id="signup-username" placeholder="Username" required />
+                <input type="email" id="signup-email" placeholder="Email" required />
+                <input type="password" id="signup-password" placeholder="Password" required />
+                <button type="submit">Sign Up</button>
+            </form>
+            <p>Already have an account? <a href="javascript:void(0)" onclick="showLoginForm()">Login here</a></p>
+        </div>
+
+        <!-- Login Form -->
+        <div id="login-form" class="form-container" style="display: none;">
+            <h2>Login</h2>
+            <form onsubmit="login(event)">
+                <input type="email" id="login-email" placeholder="Email" required />
+                <input type="password" id="login-password" placeholder="Password" required />
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="javascript:void(0)" onclick="showSignupForm()">Sign up here</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Firebase config
+        const firebaseConfig = {
+            apiKey: "AIzaSyDxUH-_JTTpp_nJaAbZz2ZwFirNm9Ihs_Y",
+            authDomain: "nutrimatch-ee3d4.firebaseapp.com",
+            projectId: "nutrimatch-ee3d4",
+            storageBucket: "nutrimatch-ee3d4.appspot.com",
+            messagingSenderId: "1097920745616",
+            appId: "1:1097920745616:web:745c143771f9e353f20815"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        // Toggle between forms
+        function showSignupForm() {
+            document.getElementById("signup-form").style.display = "flex";
+            document.getElementById("login-form").style.display = "none";
+        }
+
+        function showLoginForm() {
+            document.getElementById("signup-form").style.display = "none";
+            document.getElementById("login-form").style.display = "flex";
+        }
+
+        // Signup function
+        async function signup(event) {
+            event.preventDefault();
+            const email = document.getElementById("signup-email").value;
+            const password = document.getElementById("signup-password").value;
+
+            try {
+                await auth.createUserWithEmailAndPassword(email, password);
+                window.location.href = "home.html"; // ✅ Redirect after signup
+            } catch (error) {
+                alert(error.message);
+            }
+        }
+
+        // Login function
+        async function login(event) {
+            event.preventDefault();
+            const email = document.getElementById("login-email").value;
+            const password = document.getElementById("login-password").value;
+
+            try {
+                await auth.signInWithEmailAndPassword(email, password);
+                window.location.href = "index.html"; // ✅ Redirect after login
+            } catch (error) {
+                alert(error.message);
+            }
+        }
+    </script>
+</body>
+
+</html>
